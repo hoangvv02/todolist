@@ -20,7 +20,7 @@
             right: 40px;
             cursor: pointer;
             line-height: 36px;
-            color: red;
+            color: #b83f45;
         }
 
         .item-name {
@@ -29,10 +29,31 @@
             overflow: hidden;
             word-wrap: break-word;
         }
+
+        .button-edit {
+            display: none;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #b83f45;
+            color: #ffffff;
+            position: absolute;
+            top: calc(50% - 7px);
+            right: 60px;
+            cursor: pointer;
+        }
+
+        .button-edit:hover {
+            background-color: #cf7d7d;
+        }
     }
 
     .item:hover {
         .icon-close {
+            display: block;
+        }
+
+        .button-edit {
             display: block;
         }
     }

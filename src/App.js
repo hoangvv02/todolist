@@ -1,6 +1,6 @@
 import './App.css';
 import React, { Component, createRef } from "react";
-import { ThemeContext } from "./ThemeContext.js";
+import { ThemeContext } from './ThemeContext';
 import { FILTER } from "./constant/constant";
 import "./App.css";
 import Header from "./components/Header.js";
@@ -100,22 +100,14 @@ class App extends Component {
   };
 
   render() {
-    const {
-      todos,
-      selectedFilter,
-      isEditInput,
-      idEdit,
-      todosPerPage,
-      currentPage,
+    const { todos, selectedFilter, isEditInput, idEdit, todosPerPage, currentPage,
     } = this.state;
 
     const { theme } = this.context;
 
-    const lastTodoIndex = currentPage * todosPerPage;
-    const firstTodoIndex = lastTodoIndex - todosPerPage;
-    const currentTodos = todos.slice(firstTodoIndex, lastTodoIndex);
+
     return (
-      <div className={`app-context ${theme}`}>
+      <div className={`app-content ${theme}`}>
         <Theme />
         <Header />
         <section className="section-container">
@@ -130,7 +122,7 @@ class App extends Component {
             updateTodo={this.updateTodo}
           />
           <TodoList
-            todos={currentTodos}
+            todos={todos}
             toggleTodo={this.toggleTodo}
             removeTodo={this.removeTodo}
             updateTodo={this.updateTodo}
@@ -138,19 +130,19 @@ class App extends Component {
             updateInput={this.updateInput}
 
           />
-          <Pagination
-            todos={todos}
-            todosPerPage={todosPerPage}
-            currentPage={currentPage}
-            handlePageChange={this.handlePageChange}
-          />
+
           <Footer
             count={this.countIncompleteTodos()}
             removeCompletedTodos={this.removeCompletedTodos}
             selectedFilter={selectedFilter}
             handleFilterChange={this.handleFilterChange}
           />
-
+          <Pagination
+            todos={todos}
+            todosPerPage={todosPerPage}
+            currentPage={currentPage}
+            handlePageChange={this.handlePageChange}
+          />
         </section>
       </div>
 
